@@ -1,7 +1,7 @@
 #include "Player.h"
 #include "Sheep.h"
 #include <iostream>
-
+using namespace std;
 Player::Player(int id)
     : id(id), health(100), selectedLine(2) { 
     generateSheepQueue();
@@ -11,13 +11,13 @@ void Player::addSheep(sf::RenderWindow& window,Sheep newSheep, int playerId, int
     if (playerId == 1) {
         newSheep.render(window, sf::Vector2f(50.0, lines[selectedLine].yPosition - 10)); 
     } else if (playerId == 2) {
-        newSheep.render(window,sf::Vector2f(750.0, lines[selectedLine].yPosition - 10)); 
+        newSheep.render(window, sf::Vector2f(750.0, lines[selectedLine].yPosition - 10)); 
     }
 
     //lines[selectedLine].sheep.emplace_back(newSheep, playerId);
 }
 
-void Player::handleInput(sf::RenderWindow& window,sf::Event& event, int playerId) {
+void Player::handleInput(sf::RenderWindow& window,sf::Event& event, int playerId,vector<Line>& lines) {
     if (event.type == sf::Event::KeyPressed) {
         if (playerId == 2) {
             if (event.key.code == sf::Keyboard::Up) {
@@ -27,9 +27,11 @@ void Player::handleInput(sf::RenderWindow& window,sf::Event& event, int playerId
                 selectedLine = (selectedLine < 4) ? selectedLine + 1 : 4;
             }
             if (event.key.code == sf::Keyboard::Return) {
+                
                 int num = rand()%3;
                 Sheep newSheep(num); 
-                addSheep(window , newSheep,2,selectedLine);
+                
+                newSheep.render(window , sf::Vector2f(750, lines[selectedLine].yPosition - 10));
             }
         } else if (playerId == 1) {
             if (event.key.code == sf::Keyboard::W) {
@@ -38,9 +40,10 @@ void Player::handleInput(sf::RenderWindow& window,sf::Event& event, int playerId
             if (event.key.code == sf::Keyboard::S) {
                 selectedLine = (selectedLine < 4) ? selectedLine + 1 : 4;
             }
-            else if (event.key.code == sf::Keyboard::Space) {
-                Sheep newSheep(rand()%3); 
-                // newSheep.render(window , sf::Vector2f(50, lines[selectedLine].yPosition - 10));
+            if (event.key.code == sf::Keyboard::Space) {
+                
+                Sheep newSheep(rand()%3);
+                newSheep.render(window , sf::Vector2f(50, lines[selectedLine].yPosition - 10));
 
                 // Sheep newsheep = getNextSheep();
                 // sf::Vector2f position(0.f , 0.f);

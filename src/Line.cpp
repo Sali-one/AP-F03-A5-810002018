@@ -41,7 +41,7 @@ void Line::handleCollisions() {
 
 void Line::renderL(sf:: RenderWindow& windowa) {
         sf::RectangleShape lineShape(sf::Vector2f(1000, 50)); 
-        lineShape.setFillColor(sf::Color::Green);
+        lineShape.setFillColor(sf::Color{ 0, 255,0 , 128 });
         lineShape.setPosition(0, yPosition );
         windowa.draw(lineShape);
 

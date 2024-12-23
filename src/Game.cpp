@@ -6,6 +6,7 @@ const string Err ="Error loading";
 
 
 vector<Line> lines;
+
 Game::Game()
     :windowa(sf::VideoMode(1080,800), "Sheep Fight"),
       player1(1), player2(2), isGameOver(false) {
@@ -57,8 +58,8 @@ void Game::processEvents() {
             windowa.close();
         }
 
-        player1.handleInput(windowa, event,  1);
-        player2.handleInput(windowa, event,  2);
+        player1.handleInput(windowa, event,  1, lines);
+        player2.handleInput(windowa, event,  2, lines);
     }
 }
 

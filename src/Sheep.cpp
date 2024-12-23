@@ -69,6 +69,9 @@ bool Sheep::isDead() const {
 
 void Sheep::render(sf::RenderWindow& window, sf::Vector2f position) {
     sprite.setPosition(position);
+    cout<< "hi"<<endl;
     window.draw(sprite);
+    
+    cout<< "hi"<<endl;
 }
 

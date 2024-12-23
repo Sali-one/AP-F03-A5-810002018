@@ -11,7 +11,7 @@ class Player {
 public:
     Player(int id);
 
-    void handleInput(sf::RenderWindow& window, sf::Event& event, int playerId);
+    void handleInput(sf::RenderWindow& window, sf::Event& event, int playerId,vector<Line>&lines);
     void render(sf::RenderWindow& window, sf::Font& font, bool isLeft, sf::Sprite& arrowSprite);
 
     int getHealth() const;
