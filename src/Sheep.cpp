@@ -1,6 +1,8 @@
 #include "Sheep.h"
 #include <iostream>
 using namespace std;
+
+const string Err ="Error loading";
 const string Path = "resources/";
 Sheep::Sheep(int type) : type(type) {
 
@@ -10,7 +12,7 @@ Sheep::Sheep(int type) : type(type) {
         health = 50;
         speed = 100; 
         if (!texture.loadFromFile(Path+"small_sheep.png")) {
-            std::cerr << "Error loading small_sheep.png" << std::endl;
+            std::cerr << Err+" small_sheep.png" << std::endl;
         }
     } else if (type == 1) {
         power = 20;
@@ -18,7 +20,7 @@ Sheep::Sheep(int type) : type(type) {
         health = 75;
         speed = 75;  
         if (!texture.loadFromFile(Path+"medium_sheep.png")) {
-            std::cerr << "Error loading medium_sheep.png" << std::endl;
+            std::cerr << Err +" medium_sheep.png" << std::endl;
         }
     } else if (type == 2) {
         power = 30; 
@@ -26,7 +28,7 @@ Sheep::Sheep(int type) : type(type) {
         health = 100; 
         speed = 50;  
         if (!texture.loadFromFile(Path+"heavy_sheep.png")) {
-            std::cerr << "Error loading heavy_sheep.png" << std::endl;
+            std::cerr << Err+" heavy_sheep.png" << std::endl;
         }
     }
 

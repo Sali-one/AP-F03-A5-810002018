@@ -2,6 +2,7 @@
 #include <iostream>
 using namespace std;
 const string Path = "resources/";
+const string Err ="Error loading";
 
 
 vector<Line> lines;
@@ -10,7 +11,7 @@ Game::Game()
       player1(1), player2(2), isGameOver(false) {
 
     if (!font.loadFromFile(Path+"arial.ttf")) {
-        std::cerr << "Error loading font!" << std::endl;
+        std::cerr << Err + " font!" << std::endl;
     }
 
     
@@ -21,13 +22,13 @@ void Game::run() {
 
     sf::Texture backgroundTexture;
     if (!backgroundTexture.loadFromFile(Path +"background.jpg")) {
-        std::cerr << "Error loading background image!" << std::endl;
+        std::cerr << Err + "background image!" << std::endl;
     }
     sf::Sprite backgroundSprite(backgroundTexture);
 
     sf::Texture arrowTexture;
     if (!arrowTexture.loadFromFile(Path+"arrow.png")) {
-        std::cerr << "Error loading arrow image!" << std::endl;
+        std::cerr << Err+" arrow image!" << std::endl;
     }
     sf::Sprite arrowSprite(arrowTexture);
 
